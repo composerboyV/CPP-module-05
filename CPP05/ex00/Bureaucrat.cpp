@@ -6,7 +6,7 @@
 /*   By: junkwak <junkwak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:57:26 by junkwak           #+#    #+#             */
-/*   Updated: 2025/03/27 19:16:15 by junkwak          ###   ########.fr       */
+/*   Updated: 2025/03/31 10:25:08 by junkwak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	Bureaucrat::getGrade() const
 
 int	Bureaucrat::incrementGrade()
 {
-	if (_grade <= 0) {
+	if (_grade <= 1) {
 		GradeTooLowException();
 	}
 
@@ -69,4 +69,10 @@ int	Bureaucrat::decrementGrade()
 	if (_grade > 150)
 		throw	GradeTooLowException();
 	return (_grade);
+}
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& other)
+{
+	os << "<" << other.getName() << ">, bureaucrat grade " << other.getGrade();
+	return os;
 }

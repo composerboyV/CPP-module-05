@@ -1,18 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   GradeTooHighException.cpp                          :+:      :+:    :+:   */
+/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junkwak <junkwak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/27 14:49:04 by junkwak           #+#    #+#             */
-/*   Updated: 2025/03/27 19:07:44 by junkwak          ###   ########.fr       */
+/*   Created: 2025/03/31 11:20:50 by junkwak           #+#    #+#             */
+/*   Updated: 2025/04/17 11:19:44 by junkwak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "GradeTooHighException.hpp"
+#include "ShrubberyCreationForm.hpp"
 
-const char* GradeTooHighException::what() const throw()
+ShrubberyCreationForm::ShrubberyCreationForm(/* args */)
 {
-	return ("PiKaChu ! \n");
+    this->sign = 145;
+    this->exec = 137;
+}
+
+ShrubberyCreationForm::~ShrubberyCreationForm()
+{
+}
+ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& other)
+{
+}
+ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
+{
 }

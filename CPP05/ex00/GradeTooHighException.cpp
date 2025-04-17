@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   GradeTooLowException.hpp                           :+:      :+:    :+:   */
+/*   GradeTooHighException.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junkwak <junkwak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/27 15:35:15 by junkwak           #+#    #+#             */
-/*   Updated: 2025/03/27 19:07:54 by junkwak          ###   ########.fr       */
+/*   Created: 2025/03/27 14:49:04 by junkwak           #+#    #+#             */
+/*   Updated: 2025/04/17 10:59:07 by junkwak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef	GRADETOOLOWEXCEPTION_HPP
-# define	GRADETOOLOWEXCEPTION_HPP
+#include "GradeTooHighException.hpp"
 
-// #include "Bureaucrat.hpp"
-#include <exception>
-class GradeTooLowException : public std::exception
+const char* GradeTooHighException::what() const throw()
 {
-	public:
-		const char* what() const throw();
-
-};
-
-#endif
+	return ("Grade too High!! \n");
+}
