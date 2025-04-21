@@ -16,8 +16,8 @@
 #include <iostream>
 #include <exception>
 #include <string>
-class	Form;
 
+class	Form;
 class GradeTooHighException;
 class GradeTooLowException;
 

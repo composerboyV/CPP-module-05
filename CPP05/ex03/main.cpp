@@ -20,7 +20,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-// 구분선 출력 함수
 void printSeparator()
 {
     std::cout << "\n--------------------------------------------------\n" << std::endl;
@@ -31,16 +30,12 @@ int main(void)
     std::cout << "TESTING INTERN CLASS" << std::endl;
     printSeparator();
 
-    // 인턴 생성
     Intern someRandomIntern;
-    
-    // 다양한 등급의 관료 생성
-    Bureaucrat boss("Boss", 1);         // 최고 등급
-    Bureaucrat manager("Manager", 25);  // 중간 등급
-    Bureaucrat worker("Worker", 70);    // 낮은 등급
-    Bureaucrat intern("Intern", 140);   // 최하위 등급
-    
-    // 1. 모든 폼 유형 테스트
+    Bureaucrat boss("Boss", 1); 
+    Bureaucrat manager("Manager", 25);
+    Bureaucrat worker("Worker", 70);
+    Bureaucrat intern("Intern", 140);
+
     {
         std::cout << "1. TESTING ALL FORM TYPES:" << std::endl;
         
@@ -70,8 +65,6 @@ int main(void)
         }
     }
     printSeparator();
-    
-    // 2. 존재하지 않는 폼 테스트
     {
         std::cout << "2. TESTING NON-EXISTENT FORM:" << std::endl;
         
@@ -86,12 +79,8 @@ int main(void)
         }
     }
     printSeparator();
-    
-    // 3. 다양한 등급의 관료가 폼을 처리하는 테스트
     {
         std::cout << "3. TESTING DIFFERENT BUREAUCRAT GRADES:" << std::endl;
-        
-        // 대통령 사면 양식 (서명: 25, 실행: 5)
         AForm* pardonForm = someRandomIntern.makeForm("Presidnet", "Ford Prefect");
         
         if (pardonForm) {
@@ -100,21 +89,19 @@ int main(void)
             
             std::cout << "\nAttempting with Manager (grade 25):" << std::endl;
             manager.signForm(*pardonForm);
-            manager.executeForm(*pardonForm);  // 서명은 가능하지만 실행 불가
+            manager.executeForm(*pardonForm);
             
             std::cout << "\nAttempting with Boss (grade 1):" << std::endl;
-            boss.executeForm(*pardonForm);  // 실행 가능
+            boss.executeForm(*pardonForm);
             
             delete pardonForm;
         }
     }
     printSeparator();
-    
-    // 4. 랜덤 폼 생성 및 처리 테스트
     {
         std::cout << "4. TESTING RANDOM FORM CREATION:" << std::endl;
         
-        srand(getpid());  // 시드 설정
+        srand(getpid());
         
         std::string formTypes[4];
         formTypes[0] = "shrubbery";

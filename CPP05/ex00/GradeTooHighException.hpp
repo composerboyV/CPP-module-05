@@ -13,7 +13,6 @@
 #ifndef	GRADETOOHIGHEXCEPTION_HPP
 # define	GRADETOOHIGHEXCEPTION_HPP
 
-// # include "Bureaucrat.hpp"
 #include <exception>
 
 class GradeTooHighException : public std::exception

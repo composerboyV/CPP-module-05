@@ -13,8 +13,8 @@
 #ifndef	GRADETOOLOWEXCEPTION_HPP
 # define	GRADETOOLOWEXCEPTION_HPP
 
-// #include "Bureaucrat.hpp"
 #include <exception>
+
 class GradeTooLowException : public std::exception
 {
 	public:

@@ -6,7 +6,7 @@
 /*   By: junkwak <junkwak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:57:26 by junkwak           #+#    #+#             */
-/*   Updated: 2025/04/18 15:32:47 by junkwak          ###   ########.fr       */
+/*   Updated: 2025/03/31 10:25:08 by junkwak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
-	if (_grade < 1)
+	if (_grade < 1) {
+		std::cout << "<" << name << ">, bureaucrat grade" << _grade << std::endl;
 		throw	GradeTooHighException();
-	else if (_grade > 150)
+	}
+	else if (_grade > 150) {
+		std::cout << "<" << name << ">, bureaucrat grade" << _grade << std::endl;
 		throw	GradeTooLowException();
-	std::cout << "<" << name << ">, bureaucrat grade" << _grade << std::endl;
+	}
 }
 
 Bureaucrat::~Bureaucrat()
@@ -58,24 +61,11 @@ int	Bureaucrat::getGrade() const
 int	Bureaucrat::incrementGrade()
 {
 	if (_grade <= 1) {
-		GradeTooLowException();
+		std::cout<<"Check Grade!"<<std::endl;
+		throw GradeTooHighException();
 	}
-
 	return (this->_grade -= 1);
 
-}
-int	Bureaucrat::decrementGrade()
-{
-	this->_grade += 1;
-	if (_grade > 150)
-		throw	GradeTooLowException();
-	return (_grade);
-}
-
-std::ostream& operator<<(std::ostream& os, const Bureaucrat& other)
-{
-	os << "<" << other.getName() << ">, bureaucrat grade " << other.getGrade();
-	return os;
 }
 
 void	Bureaucrat::signForm(AForm& form)
@@ -92,6 +82,16 @@ void	Bureaucrat::signForm(AForm& form)
 	}
 }
 
+int	Bureaucrat::decrementGrade()
+{
+	this->_grade += 1;
+	if (_grade > 150) {
+		std::cout<<"Check Grade!!"<<std::endl;
+		throw	GradeTooLowException();
+	}
+	return (_grade);
+}
+
 void	Bureaucrat::executeForm(AForm const &form)
 {
 	try {
@@ -102,4 +102,10 @@ void	Bureaucrat::executeForm(AForm const &form)
 		std::cout<<"<"<<this->getName()<<"> couldn`t execute <"<<form.getName() \
 		<<"> because "<<e.what()<<std::endl;
 	}
+}
+
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& other)
+{
+	os << "<" << other.getName() << ">, bureaucrat grade " << other.getGrade();
+	return os;
 }

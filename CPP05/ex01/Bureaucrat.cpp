@@ -6,7 +6,7 @@
 /*   By: junkwak <junkwak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:57:26 by junkwak           #+#    #+#             */
-/*   Updated: 2025/04/17 20:05:05 by junkwak          ###   ########.fr       */
+/*   Updated: 2025/03/31 10:25:08 by junkwak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
-	if (_grade < 1)
+	if (_grade < 1) {
+		std::cout << "<" << name << ">, bureaucrat grade" << _grade << std::endl;
 		throw	GradeTooHighException();
-	else if (_grade > 150)
+	}
+	else if (_grade > 150) {
+		std::cout << "<" << name << ">, bureaucrat grade" << _grade << std::endl;
 		throw	GradeTooLowException();
-	std::cout << "<" << name << ">, bureaucrat grade" << _grade << std::endl;
+	}
 }
 
 Bureaucrat::~Bureaucrat()
@@ -57,19 +60,12 @@ int	Bureaucrat::getGrade() const
 
 int	Bureaucrat::incrementGrade()
 {
-	if (_grade <= 0) {
-		GradeTooLowException();
+	if (_grade <= 1) {
+		std::cout<<"Check Grade!"<<std::endl;
+		throw GradeTooHighException();
 	}
-
 	return (this->_grade -= 1);
 
-}
-int	Bureaucrat::decrementGrade()
-{
-	this->_grade += 1;
-	if (_grade > 150)
-		throw	GradeTooLowException();
-	return (_grade);
 }
 
 void	Bureaucrat::signForm(Form& form)
@@ -86,8 +82,18 @@ void	Bureaucrat::signForm(Form& form)
 	}
 }
 
+int	Bureaucrat::decrementGrade()
+{
+	this->_grade += 1;
+	if (_grade > 150) {
+		std::cout<<"Check Grade!!"<<std::endl;
+		throw	GradeTooLowException();
+	}
+	return (_grade);
+}
+
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& other)
 {
-	os << "<" << other.getName() << ">, bureaucrat grade" << other.getGrade();
+	os << "<" << other.getName() << ">, bureaucrat grade " << other.getGrade();
 	return os;
 }

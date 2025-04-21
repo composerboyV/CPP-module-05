@@ -16,11 +16,14 @@
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
-	if (_grade < 1)
+	if (_grade < 1) {
+		std::cout << "<" << name << ">, bureaucrat grade" << _grade << std::endl;
 		throw	GradeTooHighException();
-	else if (_grade > 150)
+	}
+	else if (_grade > 150) {
+		std::cout << "<" << name << ">, bureaucrat grade" << _grade << std::endl;
 		throw	GradeTooLowException();
-	std::cout << "<" << name << ">, bureaucrat grade" << _grade << std::endl;
+	}
 }
 
 Bureaucrat::~Bureaucrat()
@@ -57,17 +60,19 @@ int	Bureaucrat::getGrade() const
 int	Bureaucrat::incrementGrade()
 {
 	if (_grade <= 1) {
-		GradeTooLowException();
+		std::cout<<"Check Grade!"<<std::endl;
+		throw GradeTooHighException();
 	}
-
 	return (this->_grade -= 1);
 
 }
 int	Bureaucrat::decrementGrade()
 {
 	this->_grade += 1;
-	if (_grade > 150)
+	if (_grade > 150) {
+		std::cout<<"Check Grade!!"<<std::endl;
 		throw	GradeTooLowException();
+	}
 	return (_grade);
 }
 
