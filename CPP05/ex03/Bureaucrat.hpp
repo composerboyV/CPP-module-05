@@ -6,7 +6,7 @@
 /*   By: junkwak <junkwak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:57:14 by junkwak           #+#    #+#             */
-/*   Updated: 2025/03/31 09:55:18 by junkwak          ###   ########.fr       */
+/*   Updated: 2025/04/18 16:30:40 by junkwak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 #include <iostream>
 #include <exception>
 #include <string>
+class AForm;
 
 class GradeTooHighException;
 class GradeTooLowException;
@@ -34,6 +35,8 @@ class Bureaucrat
 		int	getGrade() const;
 		int	incrementGrade();
 		int	decrementGrade();
+		void	signForm(AForm& form);
+		void	executeForm(AForm const &form);
 };
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 

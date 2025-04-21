@@ -1,12 +1,15 @@
-NAME =Bureaucrat
+	NAME =Bureaucrat
 
-CC = clang++
+CC = c++
 
-CFLAGS = -Wall -Wextra -Werror -std=c++98
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
 
 RM = rm -rf
 
-MPATH = main.cpp ./GradeTooLowException.cpp ./Bureaucrat.cpp ./GradeTooHighException.cpp
+MPATH = ./main.cpp ./AForm.cpp ./Bureaucrat.cpp ./GradeTooHighException.cpp \
+			PresidentialPardonForm.cpp ./RobotomyRequestForm.cpp ./GradeTooLowException.cpp \
+			./ShrubberyCreationForm.cpp ./Intern.cpp
+
 
 OBJ_M = $(MPATH:.cpp=.o)
 

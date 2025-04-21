@@ -6,13 +6,14 @@
 /*   By: junkwak <junkwak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:57:26 by junkwak           #+#    #+#             */
-/*   Updated: 2025/03/31 10:25:08 by junkwak          ###   ########.fr       */
+/*   Updated: 2025/04/18 15:32:47 by junkwak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "GradeTooHighException.hpp"
 #include "GradeTooLowException.hpp"
+#include "AForm.hpp"
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
@@ -25,6 +26,7 @@ Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 
 Bureaucrat::~Bureaucrat()
 {
+    std::cout<<"Bureaucrat Constructor!"<<std::endl;
 }
 
 Bureaucrat::Bureaucrat(const Bureaucrat& other)
@@ -75,4 +77,30 @@ std::ostream& operator<<(std::ostream& os, const Bureaucrat& other)
 {
 	os << "<" << other.getName() << ">, bureaucrat grade " << other.getGrade();
 	return os;
+}
+
+void	Bureaucrat::signForm(AForm& form)
+{
+	try
+	{
+		form.beSigned(*this);
+		std::cout<<"<"<<getName()<<"> signed" <<form.getName()<<std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cout<<"<"<<getName()<<"> couldn`t sign <"<<form.getName()
+		<<"> because " <<e.what()<<std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const &form)
+{
+	try {
+		form.execute(*this);
+		std::cout<<"<"<<this->getName()<<"> executed <"<<form.getName()<<">"<<std::endl;
+	}	
+	catch(const std::exception& e) {
+		std::cout<<"<"<<this->getName()<<"> couldn`t execute <"<<form.getName() \
+		<<"> because "<<e.what()<<std::endl;
+	}
 }

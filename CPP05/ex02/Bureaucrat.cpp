@@ -6,7 +6,7 @@
 /*   By: junkwak <junkwak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:57:26 by junkwak           #+#    #+#             */
-/*   Updated: 2025/04/17 20:10:24 by junkwak          ###   ########.fr       */
+/*   Updated: 2025/04/18 15:32:47 by junkwak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,14 @@ void	Bureaucrat::signForm(AForm& form)
 	}
 }
 
-void	Bureaucrat::executed(AForm const &form)
+void	Bureaucrat::executeForm(AForm const &form)
 {
-	
+	try {
+		form.execute(*this);
+		std::cout<<"<"<<this->getName()<<"> executed <"<<form.getName()<<">"<<std::endl;
+	}	
+	catch(const std::exception& e) {
+		std::cout<<"<"<<this->getName()<<"> couldn`t execute <"<<form.getName() \
+		<<"> because "<<e.what()<<std::endl;
+	}
 }

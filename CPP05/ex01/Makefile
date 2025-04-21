@@ -24,7 +24,7 @@ bonus:			all
 
 clean:
 				@$(RM) $(OBJ_M)
-				@echo -e "$(YELLOW)object files deleted!$(DEFAULT)"
+				@echo "$(YELLOW)object files deleted!$(DEFAULT)"
 
 fclean:			clean
 				@$(RM) $(NAME)

@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RobotomyRequestForm.cpp                            :+:      :+:    :+:   */
+/*   GradeTooHighException.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junkwak <junkwak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/31 11:20:47 by junkwak           #+#    #+#             */
-/*   Updated: 2025/04/17 11:21:27 by junkwak          ###   ########.fr       */
+/*   Created: 2025/03/27 14:40:22 by junkwak           #+#    #+#             */
+/*   Updated: 2025/04/18 11:23:25 by junkwak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "RobotomyRequestForm.hpp"
+#ifndef	GRADETOOHIGHEXCEPTION_HPP
+# define	GRADETOOHIGHEXCEPTION_HPP
 
-RobotomyRequestForm::RobotomyRequestForm(void)
+#include <exception>
+
+class GradeTooHighException : public std::exception
 {
-    this->sign = 72;
-    this->exec = 45;
-}
+	public:
+		const char* what() const throw();
+};
 
-RobotomyRequestForm::~RobotomyRequestForm()
-{
-}
-
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other)
-{}
-RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other)
-{}
+#endif

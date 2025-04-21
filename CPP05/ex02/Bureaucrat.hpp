@@ -6,7 +6,7 @@
 /*   By: junkwak <junkwak@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/26 14:57:14 by junkwak           #+#    #+#             */
-/*   Updated: 2025/04/17 20:05:31 by junkwak          ###   ########.fr       */
+/*   Updated: 2025/04/18 15:16:10 by junkwak          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class Bureaucrat
 		int	incrementGrade();
 		int	decrementGrade();
 		void	signForm(AForm& form);
-		void	executed(AForm const &form);
+		void	executeForm(AForm const &form);
 };
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
