@@ -31,9 +31,8 @@ Intern::Intern(const Intern& other)
 }
 Intern& Intern::operator=(const Intern& other)
 {
-    for (int i = 0; i < 4; i++) {
-        if (this->str[i] != other.str[i])
-        {
+    if (this != &other) {
+        for (int i = 0; i < 4; i++) {
             this->str[i] = other.str[i];
         }
     }
@@ -43,12 +42,11 @@ Intern& Intern::operator=(const Intern& other)
 AForm*  Intern::makeForm(std::string Form, std::string target)
 {
     int index = -1;
-    for (int i = 0; i < 4; i++) {
-        if (str[i] == Form) {
-            index = i;
-            break ;
-        }
-    }
+    index = (str[0] == Form) ? 0 : index;
+    index = (str[1] == Form) ? 1 : index;
+    index = (str[2] == Form) ? 2 : index;
+    index = (str[3] == Form) ? 3 : index;
+
     AForm* check_case = NULL;
     switch(index) {
         case 0:
